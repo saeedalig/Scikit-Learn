@@ -1,0 +1,19 @@
+import pandas as pd
+from sklearn.impute import SimpleImputer
+
+# Load Titanic dataset
+titanic_df = pd.read_csv('titanic.csv')
+
+# Replace missing values in 'Age' column with median
+age_imputer = SimpleImputer(strategy='median')
+titanic_df['Age'] = age_imputer.fit_transform(titanic_df[['Age']])
+
+
+# Replace missing values in 'Embarked' column with most frequent value
+embarked_imputer = SimpleImputer(strategy='most_frequent')
+titanic_df['Embarked'] = embarked_imputer.fit_transform(titanic_df[['Embarked']])
+
+
+# Replace missing values in 'Cabin' column with 'Unknown'
+cabin_imputer = SimpleImputer(strategy='constant', fill_value='Unknown')
+titanic_df['Cabin'] = cabin_imputer.fit_transform(titanic_df[['Cabin']])
