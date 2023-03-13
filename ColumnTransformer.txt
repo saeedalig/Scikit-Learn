@@ -1,0 +1,29 @@
+import pandas as pd
+from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+
+
+df = pd.read_csv("titanic.csv")
+
+# apply a StandardScaler to the numerical columns only
+num_features = ['Age', 'Fare']
+
+
+# define a transformer for numerical columns
+num_transformer = StandardScaler()
+
+# define a column transformer that applies transformer to selected columns
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('num', num_transformer, num_features) # apply the num_transformer to the num_features],
+         remainder='passthrough' # include the non-transformed columns in the output)
+
+# fit the transformer to your data
+X_transformed = preprocessor.fit_transform(X)
+
+# define a LogisticRegression model and fit it to the transformed data
+model = LogisticRegression()
+model.fit(X_transformed, y)
