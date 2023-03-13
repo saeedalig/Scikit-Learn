@@ -2,7 +2,6 @@
 
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
 # Load the dataset
@@ -27,7 +26,6 @@ X_test = scaler.transform(X_test)
 
 import pandas as pd
 from sklearn.preprocessing import RobustScaler
-from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
 # Load the dataset
@@ -48,7 +46,6 @@ X_test = scaler.transform(X_test)
   
 #  -----------------------------------------------------------------------MinMaxScaler-------------------------------------------------------------------------------
 import pandas as pd
-from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 
